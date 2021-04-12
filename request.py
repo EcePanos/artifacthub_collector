@@ -22,7 +22,7 @@ def get_packages():
     packages = []
     headers = {
     'accept': 'application/json',
-    'X-API-KEY': 'MXVVfFmKgiJSueaHORAvFqqCm98VksZknGnEFKRH3NE='
+    'X-API-KEY': 'your-API-key-here'
     }
     for name in names:
         print(f"Collecting metadata from info {count + 1} of {len(names)}")
