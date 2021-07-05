@@ -1,7 +1,12 @@
-FROM python:3.7.5-buster
+FROM python:3.9.6-slim-buster
 
 WORKDIR /usr/src/app
-RUN apt install curl openssl bash
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    openssl \
+    bash \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl \
@@ -13,6 +18,6 @@ RUN mkdir charts
 
 COPY ./request.py ./requirements.txt ./download.py  ./main.py ./
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["python", "./main.py"]
