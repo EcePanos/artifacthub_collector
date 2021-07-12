@@ -61,7 +61,7 @@ def _api_iterate_paged(api_wrapper, slice_size=60):
         _offset += _limit
         # call ArtifactHUB API
         _response = api_wrapper(offset=_offset, limit=_limit)
-        print(len(_result))
+        print(len(_result), end='\r')
 
     return _result
 
