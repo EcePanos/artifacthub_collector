@@ -41,6 +41,5 @@ def download_helm():
         print(f'Pulling chart {count + 1} of {len(charts)}')
 
         subprocess.run(f"helm repo add {charts[item]['repo_name']} {charts[item]['repo_url']}", shell=True)
-        #subprocess.run(f"helm pull {charts[item]['repo_name']}/{charts[item]['chart_name']} --version {charts[item]['version']} -d {_download_target_dir}", shell=True)
         subprocess.run(f"helm pull {charts[item]['repo_name']}/{charts[item]['chart_name']} --version {charts[item]['version']} -d {_download_target_dir} --untar --untardir {charts[item]['repo_name']}/{charts[item]['chart_name']}_{charts[item]['version']}", shell=True)
         count += 1
