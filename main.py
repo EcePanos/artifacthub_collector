@@ -21,9 +21,9 @@ elif args.process_step == 'acquire-repos':
     request.get_repositories()
 elif args.process_step == 'download-helm':
     # download helm charts, needs a local package JSON
-    download.download()
+    download.download_helm()
 elif args.process_step == 'all':
     # run all steps intertwined
     request.get_packages()
     request.get_repositories()
-    download.download()
+    download.download_helm()
